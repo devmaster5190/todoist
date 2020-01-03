@@ -27,6 +27,7 @@ export const useTasks = selectedProject => {
         id: task.id,
         ...task.data()
       }))
+
       setTasks(
         selectedProject === "NEXT_7"
           ? newTasks.filter(
@@ -66,9 +67,7 @@ export const useProjects = () => {
           setProjects(allProject)
         }
       })
-
-    return () => {}
   }, [projects])
 
-  return { projects, setProjects }
+  return [projects, setProjects]
 }
