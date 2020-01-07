@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import { firebase } from "../firebase"
-import { useProjectsValue, useSelectedProjectValue } from "../context"
+import { useProjectsValue } from "../context"
 import { generatePushId } from "../helpers"
 
 const AddProject = ({ shouldShow = false }) => {
