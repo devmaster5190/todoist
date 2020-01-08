@@ -18,6 +18,7 @@ const Header = ({ darkMode, setDarkMode }) => {
           <ul>
             <li data-testid="quick-add-task-action" className="settings__add">
               <button
+                aria-label="Quick add task"
                 type="button"
                 onClick={() => {
                   setShowQuickAddTask(true)
@@ -33,6 +34,7 @@ const Header = ({ darkMode, setDarkMode }) => {
             </li>
             <li data-testid="dark-mode-action" className="settings__dark-mode">
               <button
+                aria-label="Darkmode on/ff"
                 type="button"
                 onClick={() => setDarkMode(!darkMode)}
                 onKeyDown={() => setDarkMode(!darkMode)}

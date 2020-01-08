@@ -22,6 +22,7 @@ const Projects = ({ activeValue = null }) => {
         <div
           role="button"
           tabIndex={0}
+          aria-label={`Select ${project.name} as the task project`}
           onClick={() => {
             setActive(project.projectId)
             setSelectedProject(project.projectId)

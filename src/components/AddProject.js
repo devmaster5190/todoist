@@ -1,4 +1,6 @@
 import React, { useState } from "react"
+import PropTypes from "prop-types"
+
 import { firebase } from "../firebase"
 import { useProjectsValue } from "../context"
 import { generatePushId } from "../helpers"
@@ -46,6 +48,7 @@ const AddProject = ({ shouldShow = false }) => {
             Add Project
           </button>
           <span
+            aria-label="Cancel adding project"
             data-testid="hide-project-overlay"
             className="add-project__cancel"
             onClick={() => setShow(false)}
@@ -59,17 +62,22 @@ const AddProject = ({ shouldShow = false }) => {
       )}
       <span className="add-project__plus">+</span>
       <span
-        className="add-project__test"
+        aria-label="Add Project"
+        className="add-project__text"
         data-testid="add-project-action"
         onClick={() => setShow(!show)}
         onKeyDown={() => setShow(!show)}
         role="button"
-        tabIndex={-1}
+        tabIndex={0}
       >
         Add Project
       </span>
     </div>
   )
+}
+
+AddProject.propTypes = {
+  shouldShow: PropTypes.bool
 }
 
 export default AddProject

@@ -63,6 +63,7 @@ const AddTask = ({
     >
       {showAddTaskMain && (
         <div
+          aria-label="Add task"
           className="add-task__shallow"
           data-testid="show-main-action"
           onClick={() => setShowMain(!showMain)}
@@ -82,6 +83,7 @@ const AddTask = ({
                 <h2 className="header">Quick Add Task</h2>
                 <span
                   className="add-task__cancel-x"
+                  aria-label="Cancel adding task"
                   data-testid="add-task-quick-cancel"
                   onClick={() => {
                     setShowMain(false)
@@ -112,6 +114,7 @@ const AddTask = ({
             setShowTaskDate={setShowTaskDate}
           />
           <input
+            aria-label="Enter your task"
             className="add-task__content"
             data-testid="add-task-content"
             type="text"
@@ -142,6 +145,7 @@ const AddTask = ({
                 setShowMain(false)
                 setShowProjectOverlay(false)
               }}
+              aria-label="Cancel adding a task"
               role="button"
               tabIndex={0}
             >
@@ -175,10 +179,10 @@ const AddTask = ({
 }
 
 AddTask.propTypes = {
-  showAddTaskMain: PropTypes.bool.isRequired,
-  shouldShowMain: PropTypes.bool.isRequired,
-  showQuickAddTask: PropTypes.bool.isRequired,
-  setShowQuickAddTask: PropTypes.bool.isRequired
+  showAddTaskMain: PropTypes.bool,
+  shouldShowMain: PropTypes.bool,
+  showQuickAddTask: PropTypes.bool,
+  setShowQuickAddTask: PropTypes.func
 }
 
 export default AddTask

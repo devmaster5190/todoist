@@ -2,7 +2,7 @@ import React from "react"
 import PropTypes from "prop-types"
 import { firebase } from "../firebase"
 
-const Checkbox = ({ id }) => {
+const Checkbox = ({ id, taskDesc }) => {
   const archiveTask = () => {
     firebase
       .firestore()
@@ -16,6 +16,7 @@ const Checkbox = ({ id }) => {
     <div
       className="checkbox-holder"
       data-testid="checkbox-action"
+      aria-label={`Mark ${taskDesc} as done?`}
       onClick={() => archiveTask()}
       onKeyDown={() => archiveTask()}
       role="button"
@@ -27,7 +28,8 @@ const Checkbox = ({ id }) => {
 }
 
 Checkbox.propTypes = {
-  id: PropTypes.string.isRequired
+  id: PropTypes.string.isRequired,
+  taskDesc: PropTypes.string.isRequired
 }
 
 export default Checkbox

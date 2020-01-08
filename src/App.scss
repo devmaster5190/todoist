@@ -435,7 +435,7 @@ header {
 
   @include mq("900px") {
     margin-left: 0;
-    widows: auto;
+    width: auto;
   }
 
   h2 {
