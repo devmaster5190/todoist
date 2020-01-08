@@ -20,7 +20,7 @@ body {
   background-color: #fafafa;
   font-smooth: always;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-something: grayscale;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 ul {
@@ -355,9 +355,13 @@ header {
       div:nth-child(1) {
         padding: 10px 0 10px 10px;
         width: 100%;
+        display: flex;
 
         span:first-of-type {
           margin-right: 10px;
+          display: flex;
+          align-items: center;
+
           svg {
             width: 18px;
             height: 18px;
@@ -499,12 +503,21 @@ header {
       top: 50%;
       padding: 20px 30px;
       transform: translate(-50%, -50%);
+
+      .header {
+        font-size: 13px;
+        margin-bottom: 20px;
+        float: left;
+      }
     }
 
-    .header {
-      font-size: 13px;
-      margin-bottom: 20px;
-      float: left;
+    .add-task__cancel-x {
+      cursor: pointer;
+      color: gray;
+      float: right;
+      font-weight: bold;
+      font-size: 12px;
+      margin-top: 10px;
     }
   }
 
@@ -518,15 +531,6 @@ header {
     float: right;
     color: gray;
     margin: 20px 10px;
-  }
-
-  .add-task__cancel-x {
-    cursor: pointer;
-    color: gray;
-    float: right;
-    font-weight: bold;
-    font-size: 12px;
-    margin-top: 10px;
   }
 
   &__project {
@@ -571,9 +575,9 @@ header {
 }
 
 .add-task__text,
-.add-project__test {
+.add-project__text {
   display: inline-block;
-  columns: #545454;
+  color: #545454;
   font-size: 14px;
   margin-left: 15px;
 }
@@ -636,7 +640,7 @@ header {
     width: 100%;
     border: 1px solid #ddd;
     background-color: white !important;
-    border-right: 3px;
+    border-radius: 3px;
     height: 35px;
     padding-left: 10px;
     padding-right: 10px;
