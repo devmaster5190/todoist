@@ -198,11 +198,26 @@ header {
             &.settings__add {
               margin-right: 15px;
               font-size: 30px;
+
+              button {
+                @include transparent-button();
+                color: white;
+                cursor: pointer;
+              }
             }
 
-            &.settings__dark-mode svg {
-              width: 20px;
-              height: 20px;
+            &.settings__dark-mode {
+              button {
+                @include transparent-button();
+                color: white;
+                cursor: pointer;
+                display: flex;
+
+                svg {
+                  width: 20px;
+                  height: 20px;
+                }
+              }
             }
           }
         }
@@ -228,17 +243,22 @@ header {
   }
 
   li {
-    padding-left: 10px;
-    padding-right: 15px;
-
     &:hover .sidebar__project-delete {
-      display: block;
+      display: flex;
     }
   }
 
   &__project {
-    padding: 5px 0;
     cursor: pointer;
+
+    div:nth-child(1) {
+      padding: 5px 0;
+      padding-left: 10px;
+      padding-right: 15px;
+      width: 100%;
+      display: flex;
+      align-items: center;
+    }
 
     &-delete {
       margin-left: auto;
@@ -323,20 +343,26 @@ header {
 
   &__generic {
     li {
-      padding: 10px 0 10px 10px;
       list-style-type: none;
       color: #333;
       display: flex;
       cursor: pointer;
       line-height: 1.5;
       font-size: 15px;
+      padding-left: 0;
+      padding-right: 0;
 
-      span:first-of-type {
-        margin-right: 10px;
-        svg {
-          width: 18px;
-          height: 18px;
-          color: #555;
+      div:nth-child(1) {
+        padding: 10px 0 10px 10px;
+        width: 100%;
+
+        span:first-of-type {
+          margin-right: 10px;
+          svg {
+            width: 18px;
+            height: 18px;
+            color: #555;
+          }
         }
       }
 
@@ -371,7 +397,7 @@ header {
     }
 
     button {
-      @include btn(50px);
+      @include btn("50px");
     }
 
     span {
@@ -412,6 +438,10 @@ header {
     font-size: 20px;
     font-weight: normal;
     margin: 0 30px 20px 0;
+  }
+
+  .add-task {
+    margin-top: 20px;
   }
 
   &__list li {
@@ -523,7 +553,7 @@ header {
   }
 
   &__submit {
-    @include btn(90px);
+    @include btn("90px");
   }
 }
 
@@ -557,12 +587,20 @@ header {
 
   &__list li {
     @include task-item();
+    padding: 0;
 
-    span:first-of-type {
-      margin-right: 10px;
+    div:nth-child(1) {
+      padding: 10px;
+      width: 100%;
+      display: flex;
+      align-items: center;
 
-      svg {
-        fill: grey;
+      span:first-of-type {
+        margin-right: 10px;
+
+        svg {
+          fill: grey;
+        }
       }
     }
   }
@@ -575,6 +613,12 @@ header {
 
   &__list li {
     @include task-item();
+    padding: 0px;
+
+    div:nth-child(1) {
+      width: 100%;
+      padding: 10px;
+    }
   }
 }
 
@@ -599,7 +643,7 @@ header {
   }
 
   &__submit {
-    @include btn(100px);
+    @include btn("100px");
   }
 
   &__cancel {

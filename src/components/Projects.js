@@ -13,18 +13,26 @@ const Projects = ({ activeValue = null }) => {
         key={project.projectId}
         data-doc-id={project.docId}
         data-testid="project-action"
-        role="button"
         className={
           active === project.projectId
             ? "active sidebar__project"
             : "sidebar__project"
         }
-        onClick={() => {
-          setActive(project.projectId)
-          setSelectedProject(project.projectId)
-        }}
       >
-        <IndividualProject project={project} />
+        <div
+          role="button"
+          tabIndex={0}
+          onClick={() => {
+            setActive(project.projectId)
+            setSelectedProject(project.projectId)
+          }}
+          onKeyDown={() => {
+            setActive(project.projectId)
+            setSelectedProject(project.projectId)
+          }}
+        >
+          <IndividualProject project={project} />
+        </div>
       </li>
     ))
   )

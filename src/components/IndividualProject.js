@@ -1,4 +1,5 @@
 import React, { useState } from "react"
+import PropTypes from "prop-types"
 import { FaTrashAlt } from "react-icons/fa"
 import { useProjectsValue, useSelectedProjectValue } from "../context"
 import { firebase } from "../firebase"
@@ -22,12 +23,15 @@ const IndividualProject = ({ project }) => {
 
   return (
     <>
-      <span className="sidebar__dot">·</span>
+      <span className="sidebar__dot">•</span>
       <span className="sidebar__project-name">{project.name}</span>
       <span
         className="sidebar__project-delete"
         data-testid="delete-project"
         onClick={() => setShowConfirm(!showConfirm)}
+        onKeyDown={() => setShowConfirm(!showConfirm)}
+        tabIndex={0}
+        role="button"
       >
         <FaTrashAlt />
         {showConfirm && (
@@ -40,13 +44,24 @@ const IndividualProject = ({ project }) => {
               >
                 Delete
               </button>
-              <span onClick={() => setShowConfirm(!showConfirm)}>Cancel</span>
+              <span
+                onClick={() => setShowConfirm(!showConfirm)}
+                onKeyDown={() => setShowConfirm(!showConfirm)}
+                tabIndex={0}
+                role="button"
+              >
+                Cancel
+              </span>
             </div>
           </div>
         )}
       </span>
     </>
   )
+}
+
+IndividualProject.propTypes = {
+  project: PropTypes.object.isRequired
 }
 
 export default IndividualProject
