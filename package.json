@@ -29,7 +29,8 @@
       "!src/index.js",
       "!src/firebase.prod.js",
       "!src/hooks/*.js",
-      "!src/context/*.js"
+      "!src/context/*.js",
+      "!src/redux/**/*.js"
     ],
     "coverageThreshold": {
       "global": {
