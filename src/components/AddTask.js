@@ -1,11 +1,11 @@
-import React, { useState } from "react"
-import PropTypes from "prop-types"
-import { FaRegListAlt, FaRegCalendarAlt } from "react-icons/fa"
-import moment from "moment"
-import { firebase } from "../firebase"
-import { useSelectedProjectValue } from "../context"
-import ProjectOverlay from "./ProjectOverlay"
-import TaskDate from "./TaskDate"
+import React, { useState } from 'react'
+import PropTypes from 'prop-types'
+import { FaRegListAlt, FaRegCalendarAlt } from 'react-icons/fa'
+import moment from 'moment'
+import { firebase } from '../firebase'
+import { useSelectedProjectValue } from '../context'
+import ProjectOverlay from './ProjectOverlay'
+import TaskDate from './TaskDate'
 
 const AddTask = ({
   showAddTaskMain = true,
@@ -13,9 +13,9 @@ const AddTask = ({
   showQuickAddTask,
   setShowQuickAddTask
 }) => {
-  const [task, setTask] = useState("")
-  const [taskDate, setTaskDate] = useState("")
-  const [project, setProject] = useState("")
+  const [task, setTask] = useState('')
+  const [taskDate, setTaskDate] = useState('')
+  const [project, setProject] = useState('')
   const [showMain, setShowMain] = useState(shouldShowMain)
   const [showProjectOverlay, setShowProjectOverlay] = useState(false)
   const [showTaskDate, setShowTaskDate] = useState(false)
@@ -24,14 +24,14 @@ const AddTask = ({
 
   const addTask = () => {
     const projectId = project || selectedProject
-    let collatedDate = ""
+    let collatedDate = ''
 
-    if (projectId === "TODAY") {
-      collatedDate = moment().format("DD/MM/YYYY")
-    } else if (projectId === "NEXT_7") {
+    if (projectId === 'TODAY') {
+      collatedDate = moment().format('DD/MM/YYYY')
+    } else if (projectId === 'NEXT_7') {
       collatedDate = moment()
-        .add(7, "days")
-        .format("DD/MM/YYYY")
+        .add(7, 'days')
+        .format('DD/MM/YYYY')
     }
 
     return (
@@ -39,18 +39,18 @@ const AddTask = ({
       projectId &&
       firebase
         .firestore()
-        .collection("tasks")
+        .collection('tasks')
         .add({
           archived: false,
           projectId,
           task,
           date: collatedDate || taskDate,
-          userId: "431f8be5568b6205a27c"
+          userId: '431f8be5568b6205a27c'
         })
         .then(() => {
-          setTask("")
-          setProject("")
-          setShowMain("")
+          setTask('')
+          setProject('')
+          setShowMain('')
           setShowProjectOverlay(false)
         })
     )
@@ -58,33 +58,33 @@ const AddTask = ({
 
   return (
     <div
-      className={showQuickAddTask ? "add-task add-task__overlay" : "add-task"}
-      data-testid="add-task-comp"
+      className={showQuickAddTask ? 'add-task add-task__overlay' : 'add-task'}
+      data-testid='add-task-comp'
     >
       {showAddTaskMain && (
         <div
-          aria-label="Add task"
-          className="add-task__shallow"
-          data-testid="show-main-action"
+          aria-label='Add task'
+          className='add-task__shallow'
+          data-testid='show-main-action'
           onClick={() => setShowMain(!showMain)}
           onKeyDown={() => setShowMain(!showMain)}
-          role="button"
+          role='button'
           tabIndex={0}
         >
           <span className="add-task__plus">+</span>
-          <span className="add-task__text">Add Task</span>
+          <span className='add-task__text'>Add Task</span>
         </div>
       )}
       {(showMain || showQuickAddTask) && (
-        <div className="add-task__main" data-testid="add-task-main">
+        <div className='add-task__main' data-testid='add-task-main'>
           {showQuickAddTask && (
             <>
-              <div data-testid="quick-add-task">
-                <h2 className="header">Quick Add Task</h2>
+              <div data-testid='quick-add-task'>
+                <h2 className='header'>Quick Add Task</h2>
                 <span
-                  className="add-task__cancel-x"
-                  aria-label="Cancel adding task"
-                  data-testid="add-task-quick-cancel"
+                  className='add-task__cancel-x'
+                  aria-label='Cancel adding task'
+                  data-testid='add-task-quick-cancel'
                   onClick={() => {
                     setShowMain(false)
                     setShowProjectOverlay(false)
@@ -95,7 +95,7 @@ const AddTask = ({
                     setShowProjectOverlay(false)
                     setShowQuickAddTask(false)
                   }}
-                  role="button"
+                  role='button'
                   tabIndex={0}
                 >
                   X
@@ -114,17 +114,17 @@ const AddTask = ({
             setShowTaskDate={setShowTaskDate}
           />
           <input
-            aria-label="Enter your task"
-            className="add-task__content"
-            data-testid="add-task-content"
-            type="text"
+            aria-label='Enter your task'
+            className='add-task__content'
+            data-testid='add-task-content'
+            type='text'
             value={task}
             onChange={e => setTask(e.target.value)}
           />
           <button
-            type="button"
-            className="add-task__submit"
-            data-testid="add-task"
+            type='button'
+            className='add-task__submit'
+            data-testid='add-task'
             onClick={() =>
               showQuickAddTask
                 ? addTask() && setShowQuickAddTask(false)
@@ -135,8 +135,8 @@ const AddTask = ({
           </button>
           {!showQuickAddTask && (
             <span
-              className="add-task__cancel"
-              data-testid="add-task-main-cancel"
+              className='add-task__cancel'
+              data-testid='add-task-main-cancel'
               onClick={() => {
                 setShowMain(false)
                 setShowProjectOverlay(false)
@@ -145,29 +145,29 @@ const AddTask = ({
                 setShowMain(false)
                 setShowProjectOverlay(false)
               }}
-              aria-label="Cancel adding a task"
-              role="button"
+              aria-label='Cancel adding a task'
+              role='button'
               tabIndex={0}
             >
               Cancel
             </span>
           )}
           <span
-            className="add-task__project"
-            data-testid="show-project-overlay"
+            className='add-task__project'
+            data-testid='show-project-overlay'
             onClick={() => setShowProjectOverlay(!showProjectOverlay)}
             onKeyDown={() => setShowProjectOverlay(!showProjectOverlay)}
-            role="button"
+            role='button'
             tabIndex={0}
           >
             <FaRegListAlt />
           </span>
           <span
-            className="add-task__date"
-            data-testid="show-task-date-overlay"
+            className='add-task__date'
+            data-testid='show-task-date-overlay'
             onClick={() => setShowTaskDate(!showTaskDate)}
             onKeyDown={() => setShowTaskDate(!showTaskDate)}
-            role="button"
+            role='button'
             tabIndex={0}
           >
             <FaRegCalendarAlt />
